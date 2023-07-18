@@ -1,4 +1,7 @@
-﻿namespace LinqHPCSummer2023
+﻿using System.Collections;
+using System.Net.Http.Headers;
+
+namespace LinqHPCSummer2023
 {
     internal class Program
     {
@@ -31,12 +34,37 @@
                                             .Select(n => n.Name)
                                             .ToList();
 
-            foreach (String s in CSMajorsQuery)
+            //foreach (String s in CSMajorsQuery)
+            //{
+            //    Console.WriteLine(s);
+            //}
+
+
+            IList mixedList = new ArrayList();
+
+            mixedList.Add("zero");
+            mixedList.Add(1);
+            mixedList.Add("Two");
+            mixedList.Add("Three");
+            mixedList.Add(4);
+            mixedList.Add(new Student() { StudentId = 6, Name = "Evan Randal", Age = 23, CSMajor = false });
+
+
+            var intResults = from ml in mixedList.OfType<int>() select ml;
+
+            var strResults = from ml in mixedList.OfType<string>() select ml;
+
+            Console.WriteLine("Numbers First:");
+            foreach (int i in intResults)
+            {
+                Console.WriteLine(i.ToString());
+            }
+
+            Console.WriteLine("Now strings:");
+            foreach (string s in strResults)
             {
                 Console.WriteLine(s);
             }
-
-            
         }
     }
 }
