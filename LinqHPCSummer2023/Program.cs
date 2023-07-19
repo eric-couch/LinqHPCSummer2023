@@ -17,16 +17,23 @@ namespace LinqHPCSummer2023
                 new Student() { StudentId = 6, Name = "Evan Randal", Age = 23, CSMajor = false }
             };
 
-            var sortedStudents = from s in HPCClass
-                                 orderby s.Age, s.Name
-                                 select s;
 
-            //var sortedStudents = HPCClass.OrderBy(s => s.Name);
 
-            foreach (Student s in sortedStudents)
-            {
-                Console.WriteLine($"{s.ToString()}");
-            }
+
+
+
+
+            // sort examples
+            //var sortedStudents = from s in HPCClass
+            //                     orderby s.Age, s.Name
+            //                     select s;
+
+            //var sortedStudents = HPCClass.OrderBy(s => s.Age).ThenBy(s => s.Name);
+
+            //foreach (Student s in sortedStudents)
+            //{
+            //    Console.WriteLine($"{s.ToString()}");
+            //}
         }
     }
 }
