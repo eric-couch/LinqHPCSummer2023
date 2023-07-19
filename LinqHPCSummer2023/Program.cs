@@ -26,94 +26,24 @@ namespace LinqHPCSummer2023
                 new Major() { Id = 3, Name = "CyberSec", FullName = "Cyber Security"}
             };
 
-            
-            // quantifier operator .All
-            // only method syntax is supported
-            bool allStudentsDrinkingAge = HPCClass.All(s => s.Age >= 21);
 
-            Console.WriteLine($"Are all students of drinking age: {allStudentsDrinkingAge}");
+            // aggregation operators
+            var avgAge = HPCClass.Average(s => s.Age);
 
-            bool allStudentsYoung = HPCClass.All(s => s.Age < 27);
+            Console.WriteLine($"Average age of students: {avgAge}");
 
-            Console.WriteLine($"Are all students young? {allStudentsYoung}");
+            var countStudents = HPCClass.Count(s => s.Age == 23);
+            Console.WriteLine($"Students age 23: {countStudents}");
 
-            // quantifier operator .Any
-            bool anyStudentsOver25 = HPCClass.Any(s => s.Age > 24 && s.Age < 27);
+            // FirstOrDefault
+            Student? firstCSMajor = HPCClass.Where(s => s.Major == "CS").FirstOrDefault();
 
-            Console.WriteLine($"Any students over 25? {anyStudentsOver25}");
+            // get computerscience element
+            Major? cs = majors.Where(m => m.Name == "CS").FirstOrDefault();
 
-            // quantifier operator .Contains
-            //Student checkForStudent = Ely;
-            bool studentElyExists = HPCClass.Contains(Ely);
+            // FirstOrDefault does the same thing as the First method except it returns the default value of the 
+            // datatype even if it doesn't find a matching element
 
-            Console.WriteLine($"contains? {studentElyExists}");
-
-            // quantifier operator .Exists
-            bool anyStudentsAre22 = HPCClass.Exists(s => s.Age == 22);
-
-            // joins
-            // query syntax
-            //var studentMajors = from s in HPCClass
-            //                    join m in majors
-            //                    on s.Major equals m.Name
-            //                    select new
-            //                    {
-            //                        StudentName = s.Name,
-            //                        StudentMajor = m.FullName
-            //                    };
-
-            //method syntax
-            //var studentMajors = HPCClass.Join(
-            //                    majors,
-            //                    s => s.Major,
-            //                    m => m.Name,
-            //                    (s, m) => new
-            //                    {
-            //                        StudentName = s.Name,
-            //                        StudentMajor = m.FullName
-            //                    });
-
-
-
-            //foreach (var sm in studentMajors)
-            //{
-            //    Console.WriteLine($"student name: {sm.StudentName} major: {sm.StudentMajor}");
-            //}
-
-
-            // group by
-            // query syntax
-            //var groupedStudents = from s in HPCClass
-            //                      group s by s.Age;
-
-            //method syntax
-            //var groupedStudents = HPCClass.GroupBy(s => s.Age);
-
-
-            //foreach (var gs in groupedStudents)
-            //{
-            //    Console.WriteLine($"This Group is Age: {gs.Key}");
-
-            //    foreach (Student s in gs)
-            //    {
-            //        Console.WriteLine($"Student Name: {s.Name} Age: {s.Age}");
-            //    }
-            //}
-
-
-
-
-            // sort examples
-            //var sortedStudents = from s in HPCClass
-            //                     orderby s.Age, s.Name
-            //                     select s;
-
-            //var sortedStudents = HPCClass.OrderBy(s => s.Age).ThenBy(s => s.Name);
-
-            //foreach (Student s in sortedStudents)
-            //{
-            //    Console.WriteLine($"{s.ToString()}");
-            //}
         }
     }
 }
