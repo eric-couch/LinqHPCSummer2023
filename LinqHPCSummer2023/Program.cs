@@ -24,6 +24,29 @@ namespace LinqHPCSummer2023
                 new Major() { Id = 3, Name = "CyberSec", FullName = "Cyber Security"}
             };
 
+            
+            // quantifier operator .All
+            // only method syntax is supported
+            bool allStudentsDrinkingAge = HPCClass.All(s => s.Age >= 21);
+
+            Console.WriteLine($"Are all students of drinking age: {allStudentsDrinkingAge}");
+
+            bool allStudentsYoung = HPCClass.All(s => s.Age < 27);
+
+            Console.WriteLine($"Are all students young? {allStudentsYoung}");
+
+            // quantifier operator .Any
+            bool anyStudentsOver25 = HPCClass.Any(s => s.Age > 24 && s.Age < 27);
+
+            Console.WriteLine($"Any students over 25? {anyStudentsOver25}");
+
+            // quantifier operator .Contains
+            Student checkForStudent = new Student() { StudentId = 2, Name = "Elyahu Jacobi", Age = 28, CSMajor = true, Major = "CS" };
+            bool studentElyExists = HPCClass.Contains(checkForStudent);
+
+            // quantifier operator .Exists
+            bool anyStudentsAre22 = HPCClass.Exists(s => s.Age == 22);
+
             // joins
             // query syntax
             //var studentMajors = from s in HPCClass
