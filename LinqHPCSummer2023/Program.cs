@@ -17,8 +17,23 @@ namespace LinqHPCSummer2023
                 new Student() { StudentId = 6, Name = "Evan Randal", Age = 23, CSMajor = false }
             };
 
+            // query syntax
+            //var groupedStudents = from s in HPCClass
+            //                      group s by s.Age;
+
+            //method syntax
+            var groupedStudents = HPCClass.GroupBy(s => s.Age);
 
 
+            foreach (var gs in groupedStudents)
+            {
+                Console.WriteLine($"This Group is Age: {gs.Key}");
+
+                foreach (Student s in gs)
+                {
+                    Console.WriteLine($"Student Name: {s.Name} Age: {s.Age}");
+                }
+            }
 
 
 
