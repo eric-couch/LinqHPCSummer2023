@@ -7,10 +7,12 @@ namespace LinqHPCSummer2023
     {
         static void Main(string[] args)
         {
+            Student Ely = new Student() { StudentId = 2, Name = "Elyahu Jacobi", Age = 28, CSMajor = true, Major = "CS" };
+
             List<Student> HPCClass = new List<Student>()
             {
                 new Student() { StudentId = 1, Name = "Varad Mahajan", Age = 23, CSMajor = true, Major = "CS" },
-                new Student() { StudentId = 2, Name = "Elyahu Jacobi", Age = 28, CSMajor = true, Major = "CS" },
+                Ely,
                 new Student() { StudentId = 3, Name = "Jon Cathcart", Age = 22, CSMajor = true, Major = "CS" },
                 new Student() { StudentId = 4, Name = "Colin Shea", Age = 22, CSMajor = false, Major = "Math" },
                 new Student() { StudentId = 5, Name = "Ananya Pattnaik", Age = 23, CSMajor = false, Major = "Math" },
@@ -41,8 +43,10 @@ namespace LinqHPCSummer2023
             Console.WriteLine($"Any students over 25? {anyStudentsOver25}");
 
             // quantifier operator .Contains
-            Student checkForStudent = new Student() { StudentId = 2, Name = "Elyahu Jacobi", Age = 28, CSMajor = true, Major = "CS" };
-            bool studentElyExists = HPCClass.Contains(checkForStudent);
+            //Student checkForStudent = Ely;
+            bool studentElyExists = HPCClass.Contains(Ely);
+
+            Console.WriteLine($"contains? {studentElyExists}");
 
             // quantifier operator .Exists
             bool anyStudentsAre22 = HPCClass.Exists(s => s.Age == 22);
