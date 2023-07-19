@@ -26,14 +26,14 @@ namespace LinqHPCSummer2023
 
             // joins
             // query syntax
-            var studentMajors = from s in HPCClass
-                                join m in majors
-                                on s.Major equals m.Name
-                                select new
-                                {
-                                    StudentName = s.Name,
-                                    StudentMajor = m.FullName
-                                };
+            //var studentMajors = from s in HPCClass
+            //                    join m in majors
+            //                    on s.Major equals m.Name
+            //                    select new
+            //                    {
+            //                        StudentName = s.Name,
+            //                        StudentMajor = m.FullName
+            //                    };
 
             //method syntax
             //var studentMajors = HPCClass.Join(
@@ -48,10 +48,10 @@ namespace LinqHPCSummer2023
 
 
 
-            foreach (var sm in studentMajors)
-            {
-                Console.WriteLine($"student name: {sm.StudentName} major: {sm.StudentMajor}");
-            }
+            //foreach (var sm in studentMajors)
+            //{
+            //    Console.WriteLine($"student name: {sm.StudentName} major: {sm.StudentMajor}");
+            //}
 
 
             // group by
