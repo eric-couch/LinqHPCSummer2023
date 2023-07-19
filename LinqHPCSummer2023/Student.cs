@@ -12,4 +12,9 @@ public class Student
     public string Name { get; set; }
     public int Age { get; set; }
     public bool CSMajor { get; set; }
+
+    public override string? ToString()
+    {
+        return $"StudentId: {StudentId} Name: {Name} Age: {Age} CSMajor: {CSMajor}";
+    }
 }
